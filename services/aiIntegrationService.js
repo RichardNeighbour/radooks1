@@ -1,10 +1,10 @@
-import { Configuration, OpenAIApi } from "openai";
+import { OpenAIApi } from "openai";
 import logger from "../utils/logger.js";
 
-const configuration = new Configuration({
+
+const openai = new OpenAIApi({
   apiKey: process.env.OPENAI_API_KEY
 });
-const openai = new OpenAIApi(configuration);
 
 async function generateStoryline(promptText) {
   try {
@@ -25,8 +25,5 @@ async function generateStoryline(promptText) {
     throw error; // Rethrow the error after logging
   }
 }
-
-// Added a trivial change to ensure there's a change to commit.
-// This comment is a placeholder for any minor adjustments needed to trigger a git commit.
 
 export { generateStoryline };
