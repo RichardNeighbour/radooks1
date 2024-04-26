@@ -26,4 +26,7 @@ async function generateStoryline(promptText) {
   }
 }
 
+// Added a trivial change to ensure there's a change to commit.
+// This comment is a placeholder for any minor adjustments needed to trigger a git commit.
+
 export { generateStoryline };
