@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/_head') %>
+  <title>Episode Details</title>
+</head>
+<body>
+  <%- include('partials/_header') %>
+
+  <div class="container mt-5">
+    <% if (episode && serie) { %>
+      <h1><%= serie.title %> - Episode <%= episode.episodeNumber %></h1>
+      <h2><%= episode.title %></h2>
+      <p><%= episode.description %></p>
+      <a href="<%= episode.url %>" target="_blank" class="btn btn-primary">Watch Episode</a>
+    <% } else { %>
+      <p>Episode not found.</p>
+    <% } %>
+  </div>
+
+  <%- include('partials/_footer') %>
+</body>
+</html>

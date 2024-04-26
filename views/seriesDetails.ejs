@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/_head') %>
+  <title>Series Details</title>
+</head>
+<body>
+  <%- include('partials/_header') %>
+
+  <div class="container mt-5">
+    <% if (serie) { %>
+      <h1><%= serie.title %></h1>
+      <p><%= serie.description %></p>
+      <h3>Episodes</h3>
+      <ul>
+        <% serie.episodes.forEach(function(episode) { %>
+          <li>
+            Episode <%= episode.episodeNumber %>: <%= episode.title %> 
+            <a href="/series/<%= serie._id %>/episodes/<%= episode.episodeNumber %>" target="_blank">Details</a>
+            <a href="<%= episode.url %>" target="_blank">Watch</a>
+          </li>
+        <% }) %>
+      </ul>
+      <section>
+        <h2>Comments</h2>
+        <% if (serie.comments && serie.comments.length > 0) { %>
+          <% serie.comments.forEach(function(comment) { %>
+            <div>
+              <strong>Posted on:</strong> <%= new Date(comment.datePosted).toDateString() %><br>
+              <p><%= comment.comment %></p>
+            </div>
+          <% }); %>
+        <% } else { %>
+          <p>No comments yet.</p>
+        <% } %>
+      </section>
+
+      <form id="commentForm">
+        <div>
+          <label for="comment">Your Comment:</label>
+          <textarea id="comment" name="comment" required></textarea>
+        </div>
+        <button type="submit">Submit Comment</button>
+      </form>
+    <% } else { %>
+      <p>Series not found.</p>
+    <% } %>
+  </div>
+
+  <%- include('partials/_footer') %>
+  <script>
+    document.getElementById('commentForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const comment = document.getElementById('comment').value;
+      if (!comment.trim()) {
+        alert('Comment cannot be empty.');
+        return;
+      }
+      try {
+        const response = await fetch(`/api/series/${'<%= serie._id %>'}/comment`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({ comment: comment }),
+          credentials: 'include' // Ensure credentials are included for session authentication
+        });
+        if (response.ok) {
+          console.log('Comment submitted successfully');
+          location.reload();
+        } else {
+          console.error('Failed to submit comment');
+          const errorResponse = await response.json();
+          console.error('Error details:', errorResponse.message);
+          alert('Failed to add comment. Please try again. Error: ' + errorResponse.message);
+        }
+      } catch (error) {
+        console.error('Error submitting comment:', error);
+        console.log('Error stack:', error.stack); // Log the error stack for better debugging
+        alert('An error occurred. Please try again. Error: ' + error.message);
+      }
+    });
+  </script>
+</body>
+</html>
