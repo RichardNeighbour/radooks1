@@ -1,17 +1,19 @@
 // Load environment variables
-require("dotenv").config();
-const mongoose = require("mongoose");
-const express = require("express");
-const cookieParser = require('cookie-parser');
-const cors = require('cors'); // Added for CORS support
-const session = require('express-session'); // Added for session support
-const authRoutes = require("./routes/authRoutes");
-const seriesRoutes = require('./routes/seriesRoutes');
-const adminRoutes = require('./routes/adminRoutes'); // Import admin routes
-const logger = require('./utils/logger'); // Import the logger
-const loggingMiddleware = require('./middleware/loggingMiddleware'); // Import logging middleware
-const fs = require('fs');
-const path = require('path');
+import dotenv from 'dotenv';
+dotenv.config();
+import mongoose from 'mongoose';
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import cors from 'cors'; // Added for CORS support
+import session from 'express-session'; // Added for session support
+import authRoutes from './routes/authRoutes.js';
+import seriesRoutes from './routes/seriesRoutes.js';
+import adminRoutes from './routes/adminRoutes.js'; // Import admin routes
+import logger from './utils/logger.js'; // Import the logger
+import loggingMiddleware from './middleware/loggingMiddleware.js'; // Import logging middleware
+import fs from 'fs';
+import path from 'path';
+import Series from './models/series.js'; // Import the Series model correctly for ES module syntax
 
 logger.info("Starting server...");
 
@@ -107,7 +109,6 @@ app.get("/", (req, res) => {
 // Adding route handler for /seriesList
 app.get("/seriesList", async (req, res) => {
   // Fetching series data from the database
-  const Series = require('./models/series'); // Ensure the Series model is correctly required
   try {
     const series = await Series.find({});
     logger.info(`Found ${series.length} series`);
