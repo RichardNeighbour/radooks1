@@ -1,10 +1,9 @@
-import { Configuration, OpenAIApi } from "openai";
+import { OpenAIApi } from "openai";
 import logger from "../utils/logger.js";
 
-const configuration = new Configuration({
+const openai = new OpenAIApi({
   apiKey: process.env.OPENAI_API_KEY
 });
-const openai = new OpenAIApi(configuration);
 
 async function generateStoryline(promptText) {
   try {
