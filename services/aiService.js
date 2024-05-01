@@ -1,6 +1,6 @@
-const { Configuration, OpenAIApi } = require("openai");
-const openAIConfig = require("../config/openAIConfig");
-const logger = require("../utils/logger");
+import { Configuration, OpenAIApi } from "openai";
+import openAIConfig from "../config/openAIConfig.js";
+import logger from "../utils/logger.js";
 
 const configuration = new Configuration({
   apiKey: openAIConfig.apiKey
@@ -30,6 +30,6 @@ async function generateStoryline(promptText) {
   }
 }
 
-module.exports = {
+export {
   generateStoryline,
 };
