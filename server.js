@@ -1,6 +1,6 @@
-<<<<<<< HEAD
+HEAD
 console.log('Hello from Radooks submodule');
-=======
+
 // Load environment variables
 require("dotenv").config();
 const mongoose = require("mongoose");
@@ -98,4 +98,4 @@ app.use((err, req, res, next) => {
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
->>>>>>> heroku/master
+heroku/master
