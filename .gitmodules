@@ -1,3 +1,4 @@
-[submodule "radooks"]
-	path = radooks
-	url = https://github.com/RichardNeighbour/radooks.git
+[submodule "submodule_name"]
+    path = path/to/submodule
+    url = https://github.com/RichardNeighbour/radooks.git
+
