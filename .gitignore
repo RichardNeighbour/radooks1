@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependency directories
 node_modules/
 
@@ -28,3 +29,10 @@ package-lock.json
 # System files
 .DS_Store
 Thumbs.db
+=======
+utils/BigBuckBunny.mp4
+utils/uploads/407c538bfa8eb91429d933251a47c7d5
+utils/uploads/407c538bfa8eb91429d933251a47c7d5
+utils/BigBuckBunny.mp4
+utils/BigBuckBunny.mp4
+>>>>>>> heroku/master

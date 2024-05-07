@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const logger = require('../../utils/logger'); // Import the logger to use for logging errors and information
 const sessionCache = require('../../utils/sessionCache'); // Import the sessionCache for session management
 
@@ -27,6 +28,12 @@ const isAuthenticated = (req, res, next) => {
     // Logging the full error details for better debugging using the logger
     logger.error(`Full error details: User not authenticated. Attempted access without valid session.`);
     logger.error(`Session object: `, sessionData); // Enhanced error logging with session object details using the logger
+=======
+const isAuthenticated = (req, res, next) => {
+  if (req.session && req.session.userId) {
+    return next(); // User is authenticated, proceed to the next middleware/route handler
+  } else {
+>>>>>>> heroku/master
     return res.status(401).send('You are not authenticated'); // User is not authenticated
   }
 };

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Radooks
 
 Radooks aims to revolutionize the way animated series are created and distributed, focusing on automating the animation process for series targeted at audiences over 12 years old. The project encompasses a comprehensive platform that not only automates the creation of animated series with compelling storylines but also hosts them on a futuristic website where users can download the series upon completion.
@@ -39,3 +40,6 @@ The project structure includes:
 Copyright (c) 2024. All Rights Reserved.
 
 The information contained herein is proprietary and confidential and cannot be shared or distributed without the express written consent of the project owners.
+=======
+# Radooks Submodule
+>>>>>>> heroku/master
